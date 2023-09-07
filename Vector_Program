@@ -1,0 +1,249 @@
+//Written By Walker Butler
+import java.util.InputMismatchException;
+import java.util.Scanner;
+class Vector_Math_Program {
+	//For keyboard read
+	static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Vector Math Program");
+		//Function display options
+		int menu=getMenu();
+		//Loop until exit
+		while(menu!=4) {
+			if(menu==1) {
+				addVectors();
+			}
+			else if(menu==2) {
+				subVectors();
+			}
+			else if(menu==2) {
+				subVectors();
+			}
+			else if(menu==3) {
+				System.out.printf("Magnitude = %.2f\n" ,getMagnitude());
+			}
+			menu=getMenu();
+		}
+		System.out.println("\n***** Thank You *****");
+	}
+	static int getMenu() {
+		int menu=0;
+		while(true) {
+			try {
+				//Display the menu to the user so that they may properly understand how to participate in this program 
+				System.out.println("\n1. Add 2 vectors\n2. Subtract 2 vectors\n3. Find magnitude of a vector\n4. Exit");
+				System.out.println("Enter value: ");
+				menu=sc.nextInt();
+				while(menu<1 || menu>4) {
+					System.out.println("Error: choice must be integer number between 1-4!!");
+					System.out.println("Enter value: ");
+					menu=sc.nextInt();
+				}
+				break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: choice must be integer number between 1-4!!");
+			}
+			}
+			return menu;
+			}
+
+			static void addVectors() {
+			int build1,build2;
+			while(true) {
+			try {
+			System.out.print("\nPlease enter the size of 1st vector: ");
+			build1=sc.nextInt();
+			while(build1<=1) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			System.out.print("Please enter the size of 1st vector: ");
+			build1=sc.nextInt();
+			}
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			}
+			}
+			while(true) {
+			try {
+			System.out.print("Please enter the size of 2nd vector: ");
+			build2=sc.nextInt();
+			while(build2<=1) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			System.out.print("Please enter the size of 2nd vector: ");
+			build2=sc.nextInt();
+			}
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			}
+			}
+			double[] vec1=new double[build1];
+			double[] vec2=new double[build2];
+			for(int i=0;i<build1;i++) {
+			while(true) {
+			try {
+			System.out.print("Please enter value for vector1: ");
+			vec1[i]=sc.nextDouble();
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: value should be decimal");
+			}
+			}
+			}
+			for(int i=0;i<build2;i++) {
+			while(true) {
+			try {
+			System.out.print("Enter value for vector2: ");
+			vec2[i]=sc.nextDouble();
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: value should be decimal");
+			}
+			}
+			}
+			//This if statement will execute the addition of the program 
+			if(build1>build2) {
+			for(int i=0;i<build2;i++) {
+			vec1[i]+=vec2[i];
+			}
+			display(vec1);
+			}
+			else if(build1<build2) {
+			for(int i=0;i<build1;i++) {
+			vec2[i]+=vec1[i];
+			}
+			display(vec2);
+			}
+			else {
+			for(int i=0;i<build1;i++) {
+			vec2[i]+=vec1[i];
+			}
+			display(vec2);
+			}
+			}
+
+			//The method will initiate the subtraction
+			static void subVectors() {
+			//Getting the size of the vectors for the program
+			int vector1,vector2;
+			while(true) {
+			try {
+			System.out.print("\nPlease enter the size of the 1st vector: ");
+			vector1=sc.nextInt();
+			while(vector1<=1) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			System.out.print("Please enter the size of the 1st vector: ");
+			vector1=sc.nextInt();
+			}
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			}
+			}
+			while(true) {
+			try {
+			System.out.print("Please enter size of the 2nd vector: ");
+			vector2=sc.nextInt();
+			while(vector2<=1) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			System.out.print("Please enter size of the 2nd vector: ");
+			vector2=sc.nextInt();
+			}
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			}
+			}
+			double[] vec1=new double[vector1];
+			double[] vec2=new double[vector2];
+			for(int i=0;i<vector1;i++) {
+			while(true) {
+			try {
+			System.out.print("Please enter value for vector1: ");
+			vec1[i]=sc.nextDouble();
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: value should be decimal");
+			}
+			}
+			}
+			for(int i=0;i<vector2;i++) {
+			while(true) {
+			try {
+			System.out.print("Please enter value for vector2: ");
+			vec2[i]=sc.nextDouble();
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: value should be decimal");
+			}
+			}
+			}
+			if(vector1>vector2) {
+			for(int i=0;i<vector2;i++) {
+			vec1[i]-=vec2[i];
+			}
+			display(vec1);
+			}
+			else if(vector1<vector2) {
+			for(int i=0;i<vector1;i++) {
+			vec2[i]-=vec1[i];
+			}
+			display(vec2);
+			}
+			else {
+			for(int i=0;i<vector1;i++) {
+			vec2[i]-=vec1[i];
+			}
+			display(vec2);
+			}
+			}
+
+			//This method will print the program's results
+			static void display(double[] vector) {
+			System.out.println("vector result: ");
+			for(int i=0;i<vector.length;i++) {
+			System.out.print(vector[i]+" ");
+			}
+			System.out.println();
+			}
+
+			//This method will return the magnitude
+			static double getMagnitude() {
+			int size;
+			while(true) {
+			try {
+			System.out.print("\nPlease enter the size of the vector: ");
+			size=sc.nextInt();
+			while(size<=1) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			System.out.print("Please enter the size of 1st vector: ");
+			size=sc.nextInt();
+			}
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: size must be a number greater than or equal to 1");
+			}
+			}
+			//Declaring my vector arrays
+			double[] vector=new double[size];
+			for(int i=0;i<size;i++) {
+			while(true) {
+			try {
+			System.out.print("Please enter value for vector1: ");
+			vector[i]=sc.nextDouble();
+			break;
+			}catch(InputMismatchException e) {
+			System.out.println("Error: value should be decimal");
+			}
+			}
+			}
+			double product=0;
+			for(int i=0;i<size;i++) {
+			product+=Math.pow(vector[i],2);
+			}
+			return Math.sqrt(product);
+			// Returns the values of the two vectors combined
+	}
+
+}
